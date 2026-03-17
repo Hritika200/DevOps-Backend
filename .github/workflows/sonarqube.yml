@@ -19,6 +19,7 @@ jobs:
           python-version: '3.10'
 
       - name: Install Dependencies
+        working-directory: backend-flask   # ✅ FIX
         run: pip install -r requirements.txt
 
       - name: SonarCloud Scan
@@ -27,6 +28,6 @@ jobs:
           args: >
             -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
             -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
-            -Dsonar.sources=.
+            -Dsonar.sources=backend-flask   # ✅ FIX
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
